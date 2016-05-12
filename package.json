@@ -1,0 +1,26 @@
+{
+  "name": "modern-js-quiz-complikatyed",
+  "version": "1.0.0",
+  "description": "## Setup",
+  "main": "quiz.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nss-evening-cohort-3/modern-js-quiz-complikatyed.git"
+  },
+  "author": "\"Katye Russell\"",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nss-evening-cohort-3/modern-js-quiz-complikatyed/issues"
+  },
+  "homepage": "https://github.com/nss-evening-cohort-3/modern-js-quiz-complikatyed#readme",
+  "devDependencies": {
+    "browser-sync": "^2.12.7",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.1",
+    "node-bourbon": "^4.2.8",
+    "node-neat": "^1.7.2"
+  }
+}
