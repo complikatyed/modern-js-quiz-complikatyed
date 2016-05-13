@@ -1,4 +1,12 @@
 @import "bourbon";
-@import "grid-settings";
 @import "neat";
+@import "grid-settings";
 
+
+section {
+  @include outer-container;
+  aside{ @include span-columns(3); 
+         background-color: blue; 
+       }
+  article{ @include span-columns(9); }
+}
