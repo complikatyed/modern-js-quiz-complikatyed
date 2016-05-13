@@ -1,37 +1,23 @@
 "use strict";
 
-var gulp = require("gulp"),
-    browserSync = require("browser-sync"),
-    sass = require("gulp-sass"),
+var gulp    = require("gulp"),
+    watch   = require('gulp-watch'),
+    sass    = require("gulp-sass"),
     bourbon = require("node-bourbon").includePaths,
-    neat = require("node-neat").includePaths;
+    neat    = require("node-neat").includePaths;
 
 // Compiles all gulp tasks
-gulp.task("default", ["sass"]);
+gulp.task('default', ['watch', 'sassify']);
 
 // Live reload anytime a file changes
-gulp.task("watch", ["browserSync", "sass"], function() {
-  gulp.watch("src/scss/**/*.scss", ["sass"]);
-  gulp.watch("dist/*.html").on("change", browserSync.reload);
+gulp.task('watch', function() {
+  gulp.watch('./sass/**/*.scss', ['sassify']);
 });
 
-// Spin up a server
-gulp.task("browserSync", function() {
-  browserSync({
-    server: {
-      baseDir: "dist"
-    }
-  })
+gulp.task('sassify', function () {
+  return gulp.src('./sass/**/*.scss')
+    .pipe(sass({includePaths: require('node-neat', 'node-bourbon').includePaths,
+    }).on('error', sass.logError))
+    .pipe(gulp.dest('./css'));
 });
 
-// Compile SASS files
-gulp.task("sass", function() {
-  gulp.src("src/scss/**/*.scss")
-      .pipe(sass({
-        includePaths: require('node-neat', 'node-bourbon').includePaths,
-      }))
-      .pipe(gulp.dest("dist/css"))
-      .pipe(browserSync.reload({
-        stream: true
-      }))
-});
